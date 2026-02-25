@@ -2,11 +2,17 @@ import CardComponent from "./components/CardComponent";
 import ClassComponent from "./components/ClassComponent";
 import FunctionalComponent from "./components/FunctionalComponent";
 import Greeting from "./components/Greetings";
+import ListComponent from "./components/ListComponent";
+import UserComponent from "./components/UserComponent";
 
 function App() {
   return (
-    <div>
-      <h2>Hello, This Is Gopal</h2>
+    
+    <>
+      <ListComponent />
+      <UserComponent isLogged = {false} username = "Gopal" />
+    
+    <div style={{display: "flex"}}>
       {/* <ClassComponent />
       <FunctionalComponent/>*/}
       <Greeting name="Gopal" />
@@ -43,8 +49,9 @@ function App() {
         name="Emma Stone"
         jobTitle="Hollywood Actor"
         email="stoneemma@bugonia.com"
-      />
-    </div>
+        />
+      </div>
+    </>
   );
 }
 
