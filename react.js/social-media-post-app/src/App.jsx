@@ -1,10 +1,13 @@
 import PostComponent from "./components/PostComponent";
+import { useState } from 'react';
 
 export default function App() {
   
   const time = new Date();
   const hours = time.getHours();
   const minutes = time.getMinutes();
+  
+  const [count, setCount] = useState(0);
   
   return (
     <div style = {{display: "flex", justifyItems: "center", alignItems: "center", gap: 15, flexDirection: "column"}}>
@@ -35,6 +38,13 @@ export default function App() {
         timestamp={`Posted at ${hours + ":" + minutes}`}
         likes="Likes: 1.5M"
       />
+      
+      <div>
+        <h4>Count: {count}</h4>
+        <button onClick={() => setCount(count + 1)}>Click</button>
+        <button onClick={() => setCount(count - 1)}>Decrease</button>
+        <button onClick={() => setCount(0)}>Reset</button>
+      </div>
     </div>
   );
 }
