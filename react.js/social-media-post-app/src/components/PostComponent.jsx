@@ -6,10 +6,6 @@ export default function PostComponent({
   image,
 }) {
   
-  const time = new Date();
-  const hours = time.getHours();
-  const minutes = time.getMinutes();
-  
   return (
     <>
       <div

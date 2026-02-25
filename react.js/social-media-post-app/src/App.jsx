@@ -9,6 +9,15 @@ export default function App() {
   
   const [count, setCount] = useState(0);
   
+  const [user, setUser] = useState({ name: 'Gopal', email: '' });
+  
+  const updateName = (newName) => {
+    setUser({
+      ...user,
+      name: newName
+    });
+  }
+  
   return (
     <div style = {{display: "flex", justifyItems: "center", alignItems: "center", gap: 15, flexDirection: "column"}}>
       <PostComponent
@@ -44,6 +53,15 @@ export default function App() {
         <button onClick={() => setCount(count + 1)}>Click</button>
         <button onClick={() => setCount(count - 1)}>Decrease</button>
         <button onClick={() => setCount(0)}>Reset</button>
+      </div>
+      
+      <div>
+        <input
+          value={user.name}
+          placeholder={user.name}
+          onChange={(e) => updateName(e.target.value)}
+        />
+        <h3>{user.name}</h3>
       </div>
     </div>
   );
