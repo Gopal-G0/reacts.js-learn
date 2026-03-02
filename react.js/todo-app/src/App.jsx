@@ -1,5 +1,20 @@
+import TodoComponent from './components/TodoComponent';
+import { useState, useRef } from 'react';
 export default function App() {
   
+  // const [todo, setTodo] = useState(''); --> Using useState() causes re-renders on every keystroke onChange..
+  const [inputArray, setInputArray] = useState([]);
+  const inputRef = useRef(null);
+  
+  // const handleChange = (event) => {
+  //   setTodo(event.target.value);
+  // }
+  
+  const addToArray = () => {
+    const value = inputRef.current.value;
+    setInputArray(prevArray => [...prevArray, value]);
+    inputRef.current.value = '';
+  }
   return (
     <div
       style={{
@@ -25,16 +40,19 @@ export default function App() {
       >
         <input
           type="text"
-          placeholder="Enter your task to add"
+          placeholder="enter your task to add"
+          ref={inputRef}
           required={true}
           style={{
             width: 450,
             height: 50,
             borderRadius: 9,
             fontSize: 16,
+            fontWeight: 550,
             paddingLeft: 15
           }}
         />
+        
         
         <button
           style={{
@@ -43,10 +61,12 @@ export default function App() {
             borderRadius: 8,
             border: "none",
             fontSize: 18,
+            cursor: "pointer",
             fontWeight: 550,
             backgroundColor: "#AF37FF",
             color: "#000000",
           }}
+          onClick={addToArray}
         >
           Add Task
         </button>
@@ -58,7 +78,12 @@ export default function App() {
           border: "1px solid grey",
         }}
       >
-        Right Tasks Display Area
+        Hii
+        <ul>
+          {inputArray.map((item, index) => (
+            <li key={index}>{item}</li>
+          ))}
+        </ul>
       </div>
     </div>
   );
