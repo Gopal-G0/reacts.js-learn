@@ -1,3 +1,5 @@
+import ProductList from "./ProductList";
+
 function App() {
   const products = [
     {
@@ -66,6 +68,8 @@ function App() {
           </li>
         ))}
       </ul>
+      
+      <ProductList />
     </div>
   );
 }
